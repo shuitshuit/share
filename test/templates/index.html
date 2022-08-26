@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
+    <script>
+        var reader = new FileReader();
+        var socket = new WebSocket("ws://192.168.10.110:8765/");
+        socket.onopen = function(e) {
+                console.log("connect");
+        }
+        socket.onmessage = function(e) {
+            console.log(e)
+            var mes = document.createElement("p");
+            mes.textContent = e.data;
+            document.getElementById("textarea").appendChild(mes);
+        }
+
+        function cli(){
+            socket.send("{'user': 'lhbzjdplou','func':'new','deta':{'password':'kkkk'}}");
+        }
+        function ss() {
+            socket.send("{'user': 'lhbzjdplou','func':'upload','deta':{'path':'a.py'}}")
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="cli();">new</button>
+    <button type="button" onclick="ss();">upload</button>
+    <div class="textarea" id="textarea"></div>
+</body>
+</html>
