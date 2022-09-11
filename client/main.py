@@ -14,7 +14,7 @@ load_dotenv(join(dirname(__file__), 'setting.env'))
 
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = env.get("upload_folder")
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif','txt','jpeg','zip','mp4','mp3','flac','exe'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif','txt','jpeg','zip','mp4','mp3','flac','exe','wav'])
 not_login = r"https://shuit.net/login?sb=share"
 
 
@@ -40,7 +40,7 @@ def login_req():
 
 def login(func):
     @wraps(func)
-    def wreapper(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         cookie = request.cookies.get('user') #cookie取得
         if cookie:
             user_id = cookie_serch(cookie,request.environ.get('HTTP_USER_AGENT'))
@@ -51,7 +51,7 @@ def login(func):
         link = url_for(f)
         link = link[1:].replace('/','-') #/**/の二文字目以降の/を-に置き換え
         return redirect(f"{not_login}&ss={link}") #ログインしてないのでログインページにリダイレクト
-    return wreapper
+    return wrapper
 
 
 def allwed_file(filename):

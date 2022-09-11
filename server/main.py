@@ -9,6 +9,7 @@ from os.path import join, dirname
 from logging import getLogger, FileHandler, DEBUG, Formatter, ERROR
 import traceback
 import ast
+import io
 
 
 load_dotenv(verbose=True)
@@ -63,14 +64,14 @@ def new(client, user, password, server):
         return "Wellcome"
 
 
-def upload(server:WebsocketServer, user:str, deta:dict):
-    """_summary_
+"""def upload(server:WebsocketServer, user:str, deta:dict):
+    ""_summary_
 
     Args:
         deta (dict): {
             "path":"file_path" #relative path
         }
-    """
+    ""
     print(deta)
     path = deta["path"].strip("/") #相対パス
     with get_connection() as conn:
@@ -90,6 +91,42 @@ def upload(server:WebsocketServer, user:str, deta:dict):
     try:
         if client:
             server.send_message(client, deta["path"])
+            return "success"
+        logger.error(traceback.format_exc())
+        return "error"
+    except:
+        logger.error(traceback.format_exc())
+        return "error" """
+def upload(server:WebsocketServer, user:str, deta:dict):
+    """_summary_
+
+    Args:
+        server (WebsocketServer): ###
+        user (str): _description_
+        deta (dict):    {
+                            "file":str,
+                            "path":str
+                        }
+    """
+    path = deta["path"].strip("/") #相対パス
+    with get_connection() as conn:
+            with conn.cursor(cursor_factory=DictCursor) as cur:
+                cur.execute(
+                    f"select deta from {user} where name='sh_path'"
+                )
+                sh_path = cur.fetchall()
+                for p in sh_path:
+                    p = p.strip(":")
+                    if path == p[0]:
+                        path = p[1]
+    client = None
+    for i in wait_user:
+        if user == i["user"]:
+            client = {"handler": i["handler"]}
+    try:
+        if client:
+            d = "{'file': '"+deta['file']+"', 'path': '"+deta['path']+"'}"
+            server.send_message(client, d)
             return "success"
         logger.error(traceback.format_exc())
         return "error"

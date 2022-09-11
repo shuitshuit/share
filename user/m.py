@@ -1,12 +1,14 @@
+import websockets
+import asyncio
+import pickle
+import subprocess as ps
+from time import sleep
 from dotenv import load_dotenv
 from os import environ as env
 from os.path import join, dirname
 from logging import getLogger, FileHandler, DEBUG, Formatter, ERROR
 import traceback
-from websocket import WebSocketApp
-import pickle
-import subprocess as ps
-from time import sleep
+import ast
 
 
 load_dotenv(verbose=True)
@@ -30,31 +32,21 @@ user = deta["user"]
 password = deta["password"]
 
 
-def on_open(ws):
-    a = "{"+"'user':'"+user+"', 'func': 'new', 'deta': {'password': "+"'"+password+"'"+"}}"
-    ws.send(
-        f"{a}"
-    )
+
+async def main():
+    async for websocket in websockets.connect("ws://localhost:8765"):
+        try:
+            a = "{"+"'user':'"+user+"', 'func': 'new', 'deta': {'password': "+"'"+password+"'"+"}}"
+            websocket.send()
+            async for mes in websocket:
+                print(mes)
+                if type(mes) == str:
+                    mes = ast.literal_eval(mes)
+                else:
+                    with open("files/none.aaa")
+        except websockets.ConnectionClosed:
+            continue
 
 
-def on_message(ws:WebSocketApp, message):
-    print(message)
-
-
-def on_close(ws, status_code, message):
-    print("closed")
-    pass
-
-
-def on_error(ws, error):
-    print(traceback.format_exc())
-    logger.error(traceback.format_exc())
-    sleep(10)
-
-
-if __name__ == '__main__':
-    wsapp = WebSocketApp("ws://localhost:8765", on_message=on_message, on_open=on_open, on_error=on_error, on_close=on_close)
-    try:
-        wsapp.run_forever()
-    except KeyboardInterrupt:
-        wsapp.close()
+if __name__ == "__main__":
+    asyncio.run(main())

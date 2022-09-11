@@ -5,8 +5,8 @@
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
     <script>
-        var reader = new FileReader();
         var socket = new WebSocket("ws://192.168.10.110:8765/");
+        let reader = new FileReader();
         socket.onopen = function(e) {
                 console.log("connect");
         }
@@ -20,8 +20,17 @@
         function cli(){
             socket.send("{'user': 'lhbzjdplou','func':'new','deta':{'password':'kkkk'}}");
         }
-        function ss() {
-            socket.send("{'user': 'lhbzjdplou','func':'upload','deta':{'path':'a.py'}}")
+        function ss(file) {
+            var input = document.createElement("file");
+            console.log("ONLOAD Reader ---- upload");
+            reader.onload = function() {
+                var d = new Uint8Array(reader.result);
+                console.log(d.buffer)
+                socket.send(d.buffer);
+                socket.send(`{'user': 'lhbzjdplou','func':'upload','deta':{'path':'a.py','file':'${d.buffer.tostring()}'}}`)
+            }
+            var blob = new Blob([input.file],{type:"text/plain"});
+            reader.readAsArrayBuffer(blob);
         }
     </script>
 </head>
@@ -29,5 +38,6 @@
     <button type="button" onclick="cli();">new</button>
     <button type="button" onclick="ss();">upload</button>
     <div class="textarea" id="textarea"></div>
+    <input type="file" id="file" name="file">
 </body>
 </html>
