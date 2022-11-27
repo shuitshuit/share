@@ -1,15 +1,1 @@
-error.log
-main.log
-upload_folder
-client/__pycache__
-client/setting.env
-server/__pycache__
-server/setting.env
-server/error.log
-server/main.log
-user/__pycache__
-user/setting.env
-user/deta
-user/error.log
-user/main.log
-a.py
+.vscode

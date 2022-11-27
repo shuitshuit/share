@@ -1,0 +1,5 @@
+C:\Users\shuitt\ドキュメント\programing\share\websocket_client\websocket_client\obj\Debug\net6.0\websocket_client.csproj.AssemblyReference.cache
+C:\Users\shuitt\ドキュメント\programing\share\websocket_client\websocket_client\obj\Debug\net6.0\websocket_client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shuitt\ドキュメント\programing\share\websocket_client\websocket_client\obj\Debug\net6.0\websocket_client.AssemblyInfoInputs.cache
+C:\Users\shuitt\ドキュメント\programing\share\websocket_client\websocket_client\obj\Debug\net6.0\websocket_client.AssemblyInfo.cs
+C:\Users\shuitt\ドキュメント\programing\share\websocket_client\websocket_client\obj\Debug\net6.0\websocket_client.csproj.CoreCompileInputs.cache
