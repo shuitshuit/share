@@ -48,10 +48,6 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.0, )"
-            },
-            "WampSharp.Fleck": {
-              "target": "Package",
-              "version": "[22.5.1, )"
             }
           },
           "imports": [

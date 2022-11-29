@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
-    <PackageReference Include="WampSharp.Fleck" Version="22.5.1" />
   </ItemGroup>
 
 </Project>
