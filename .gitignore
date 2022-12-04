@@ -1,1 +1,5 @@
 .vscode
+websocket_client/websocket_client/bin
+websocket_client/websocket_client/obj
+websocket/websocket/bin
+websocket/websocket/obj

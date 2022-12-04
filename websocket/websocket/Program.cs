@@ -64,34 +64,42 @@ namespace WebSocketServer
                 sockets.Add(socket);
             }
             var info = socket.ConnectionInfo; // user information
-            var value = ParametersToDictionary(info.Path);
-            (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
-            if (result.available)
+            try
             {
-                value.Add("user_id", result.user_id);
-            }else
-            {
-                socket.Close();
-                return;
-            }
-            if (info.Path.StartsWith("/server?"))
-            {
-                /*
-                    /server?key=(api key)
-                */
-                NewServer(socket, value);
-            }else {
-                foreach (var i in paths)
+                var value = ParametersToDictionary(info.Path);
+                (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
+                if (result.available)
                 {
-                    if (info.Path.StartsWith(i))
-                    {
-                        Console.WriteLine($"Open: {info.ClientIpAddress} {info.ClientPort}");
-                        Console.WriteLine(">> Welcome!!");
-                        await socket.Send("Welcome");
-                        return;
-                    }
+                    value.Add("user_id", result.user_id);
+                }else
+                {
+                    socket.Close();
+                    return;
                 }
-                socket.Close();
+                if (info.Path.StartsWith("/server?"))
+                {
+                    /*
+                        /server?key=(api key)
+                    */
+                    NewServer(socket, value);
+                }else {
+                    foreach (var i in paths)
+                    {
+                        if (info.Path.StartsWith(i))
+                        {
+                            Console.WriteLine($"Open: {info.ClientIpAddress} {info.ClientPort}");
+                            Console.WriteLine(">> Welcome!!");
+                            await socket.Send("Welcome");
+                            return;
+                        }
+                    }
+                    socket.Close();
+                }
+            }catch (ParametersException e)
+            {
+                Console.WriteLine(e);
+                await socket.Send(e.Message);
+                socket.Close(400);
             }
         }
 
@@ -102,19 +110,27 @@ namespace WebSocketServer
             sockets.Remove(socket);
             if (info.Path.StartsWith("/server"))
             {
-                Dictionary<string, string> value = ParametersToDictionary(info.Path);
-                var res = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
-                var query = $"select server_name from api_key where key = '{value["key"]}';";
-                string name;
-                using (var connection = new NpgsqlConnection(URI))
-                using (var command = new NpgsqlCommand(query, connection))
+                try
                 {
-                    connection.Open();
-                    var reader = command.ExecuteReader();
-                    reader.Read();
-                    name = res.user_id + reader.GetString(0);
+                    Dictionary<string, string> value = ParametersToDictionary(info.Path);
+                    var res = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
+                    var query = $"select server_name from api_key where key = '{value["key"]}';";
+                    string name;
+                    using (var connection = new NpgsqlConnection(URI))
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        var reader = command.ExecuteReader();
+                        reader.Read();
+                        name = res.user_id + reader.GetString(0);
+                    }
+                    servers.Remove(name);
                 }
-                servers.Remove(name);
+                catch (ParametersException e)
+                {
+                    Console.WriteLine(e.Message);
+                    socket.Close();
+                }
             }
             Console.WriteLine($"Closed {info.ClientIpAddress} {info.ClientPort}");
         }
@@ -128,19 +144,26 @@ namespace WebSocketServer
         }
 
 
-        static void OnBinary(IWebSocketConnection socket, byte[] bytes)
+        static async void OnBinary(IWebSocketConnection socket, byte[] bytes)
         {
             var info = socket.ConnectionInfo;
-            Dictionary<string, string> value = ParametersToDictionary(info.Path);
-            (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
-            value["user_id"] = result.user_id;
-            if (result.available)
+            try
             {
-                if (info.Path.StartsWith("/upload?"))
+                Dictionary<string, string> value = ParametersToDictionary(info.Path);
+                (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
+                value["user_id"] = result.user_id;
+                if (result.available)
                 {
-                    // /upload?key=(user key)&name=(server name)&number=(file number)&filename=(file name)
-                    Upload(socket, bytes, value);
-                }//else if (info.Path.StartsWith(""))
+                    if (info.Path.StartsWith("/upload?"))
+                    {
+                        // /upload?key=(user key)&name=(server name)&number=(file number)&filename=(file name)
+                        Upload(socket, bytes, value);
+                    }//else if (info.Path.StartsWith(""))
+                }
+            }catch (ParametersException e)
+            {
+                Console.WriteLine(e.Message);
+                await socket.Send(e.Message);
             }
         }
 
@@ -330,6 +353,7 @@ namespace WebSocketServer
             {
                 var a = i.Split("=");
                 if (a == null){throw new ParametersException("The format is wrong.");}
+                if (a.Length == 1){throw new ParametersException("The format is wrong."); }
                 parameters.Add(a[0], a[1]);
             }
             return parameters;
@@ -351,7 +375,6 @@ namespace WebSocketServer
                 }
                 reader.Read();
                 string user_id = reader.GetString(0);
-                Console.WriteLine(reader[0]);
                 if (reader.Read())
                 {
                     (bool available, string user_id) res = (false, "none");
