@@ -21,7 +21,7 @@ namespace ClientServer
         }
 
 
-        public async Task Run() => await Task.Run(() => { ws.Connect(); Console.WriteLine("wefw"); });
+        public async Task RunAsync() => await Task.Run(() => { ws.Connect(); Console.WriteLine("wefw"); });
 
         private static Dictionary<string, dynamic> ConvertJson(string jsonString)
         {
