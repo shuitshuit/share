@@ -67,14 +67,30 @@ namespace WebSocketServer
             try
             {
                 var value = ParametersToDictionary(info.Path);
-                (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
-                if (result.available)
+                (bool available, string userId) result;
+                string[]? certification = { info.Cookies["secret-key"], info.Headers["secret-key"], info.Headers["Sec-WebSocket-Protocol"], "-last-" };
+                foreach (var i in certification)
                 {
-                    value.Add("user_id", result.user_id);
-                }else
-                {
-                    socket.Close();
-                    return;
+                    result = CheckKey(value["key"], i);
+                    if (result.available)
+                    {
+                        value.Add("user_id", result.userId);
+                        break;
+                    }
+                    else
+                    {
+                        if (i == "-last-")
+                        {
+                            Console.WriteLine($"authentication failure: {info.ClientIpAddress}");
+                            socket.Close();
+                            return;
+
+                        }else
+                        {
+                            continue;
+                        }
+
+                    }
                 }
                 if (info.Path.StartsWith("/server?"))
                 {
@@ -82,7 +98,8 @@ namespace WebSocketServer
                         /server?key=(api key)
                     */
                     NewServer(socket, value);
-                }else {
+                }else
+                {
                     foreach (var i in paths)
                     {
                         if (info.Path.StartsWith(i))

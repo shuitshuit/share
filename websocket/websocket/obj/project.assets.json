@@ -576,23 +576,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shuitt\\.nuget\\packages\\": {},
+    "C:\\Users\\shuit\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket\\websocket\\websocket.csproj",
+      "projectUniqueName": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket\\websocket\\websocket.csproj",
       "projectName": "websocket",
-      "projectPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket\\websocket\\websocket.csproj",
-      "packagesPath": "C:\\Users\\shuitt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket\\websocket\\obj\\",
+      "projectPath": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket\\websocket\\websocket.csproj",
+      "packagesPath": "C:\\Users\\shuit\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket\\websocket\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\shuitt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shuit\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -649,7 +649,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.2.22477.23\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
