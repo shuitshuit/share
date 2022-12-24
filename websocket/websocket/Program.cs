@@ -64,33 +64,30 @@ namespace WebSocketServer
                 sockets.Add(socket);
             }
             var info = socket.ConnectionInfo; // user information
+            Console.WriteLine($"{info.ClientIpAddress} is the connection request");
             try
             {
                 var value = ParametersToDictionary(info.Path);
                 (bool available, string userId) result;
-                string[]? certification = { info.Cookies["secret-key"], info.Headers["secret-key"], info.Headers["Sec-WebSocket-Protocol"], "-last-" };
-                foreach (var i in certification)
+                try
                 {
-                    result = CheckKey(value["key"], i);
-                    if (result.available)
-                    {
-                        value.Add("user_id", result.userId);
-                        break;
-                    }
-                    else
-                    {
-                        if (i == "-last-")
-                        {
-                            Console.WriteLine($"authentication failure: {info.ClientIpAddress}");
-                            socket.Close();
-                            return;
-
-                        }else
-                        {
-                            continue;
-                        }
-
-                    }
+                    result = CheckKey(value["key"], info.Cookies["secret-key"]);
+                }
+                catch
+                {
+                    Console.WriteLine($"authentication failure: {info.ClientIpAddress}");
+                    socket.Close();
+                    return;
+                }
+                if (result.available)
+                {
+                    value.Add("user_id", result.userId);
+                }
+                else
+                {
+                    Console.WriteLine($"authentication failure: {info.ClientIpAddress}");
+                    socket.Close();
+                    return;
                 }
                 if (info.Path.StartsWith("/server?"))
                 {
@@ -130,7 +127,7 @@ namespace WebSocketServer
                 try
                 {
                     Dictionary<string, string> value = ParametersToDictionary(info.Path);
-                    var res = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
+                    var res = CheckKey(value["key"], info.Cookies["secret-key"]);
                     var query = $"select server_name from api_key where key = '{value["key"]}';";
                     string name;
                     using (var connection = new NpgsqlConnection(URI))
@@ -139,7 +136,7 @@ namespace WebSocketServer
                         connection.Open();
                         var reader = command.ExecuteReader();
                         reader.Read();
-                        name = res.user_id + reader.GetString(0);
+                        name = res.userId + reader.GetString(0);
                     }
                     servers.Remove(name);
                 }
@@ -167,8 +164,8 @@ namespace WebSocketServer
             try
             {
                 Dictionary<string, string> value = ParametersToDictionary(info.Path);
-                (bool available, string user_id) result = CheckKey(value["key"], info.Headers["Sec-WebSocket-Protocol"]);
-                value["user_id"] = result.user_id;
+                (bool available, string userId) result = CheckKey(value["key"], info.Cookies["secret-key"]);
+                value["user_id"] = result.userId;
                 if (result.available)
                 {
                     if (info.Path.StartsWith("/upload?"))
@@ -287,6 +284,8 @@ namespace WebSocketServer
             Array.Copy(bytes, file, bytes.Length);
             Array.Copy(fileNumber, file, 1);
             Array.Copy(fileId, file, fileId.Length);
+            string fi = $"{string.Join(",", file)}";
+            socket.Send(fi);
             try
             {
                 if (servers[value["user_id"] + value["name"]].IsAvailable)
@@ -377,7 +376,7 @@ namespace WebSocketServer
         }
 
 
-        static (bool available, string user_id) CheckKey(string key, string secret)
+        static (bool available, string userId) CheckKey(string key, string secret)
         {
             string query = $"select user_id from api_key where key = '{key}' and secret_key = '{secret}';";
             using (var connection = new NpgsqlConnection(URI))

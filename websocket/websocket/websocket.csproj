@@ -10,8 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Fleck" Version="1.2.0" />
-    <PackageReference Include="Npgsql" Version="6.0.7" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

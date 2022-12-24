@@ -289,13 +289,13 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "WebSocketSharp/1.0.3-rc11": {
+      "websocketsharp-net6/1.0.0": {
         "type": "package",
         "compile": {
-          "lib/websocket-sharp.dll": {}
+          "lib/net6.0/websocket-sharp.dll": {}
         },
         "runtime": {
-          "lib/websocket-sharp.dll": {}
+          "lib/net6.0/websocket-sharp.dll": {}
         }
       }
     }
@@ -719,44 +719,43 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "WebSocketSharp/1.0.3-rc11": {
-      "sha512": "7VCF7f7zVMOvLGD8LeGS4DVXc8lOcB6kXnUMeTxigu+PMiU+6wW5Olq2gYrDU8vDRKOwFY+5RyBaLyzb8skEzA==",
+    "websocketsharp-net6/1.0.0": {
+      "sha512": "lrMTo7JSn9W4x2Tmz9hNIz/ozHbVLUgAUS58wV3KKpYgFxImPJnKmChlWdHG1sJdVfiflz4JdkQosz/xuAoeUQ==",
       "type": "package",
-      "path": "websocketsharp/1.0.3-rc11",
+      "path": "websocketsharp-net6/1.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/websocket-sharp.dll",
-        "lib/websocket-sharp.xml",
-        "websocketsharp.1.0.3-rc11.nupkg.sha512",
-        "websocketsharp.nuspec"
+        "lib/net6.0/websocket-sharp.dll",
+        "websocketsharp-net6.1.0.0.nupkg.sha512",
+        "websocketsharp-net6.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.0",
-      "WebSocketSharp >= 1.0.3-rc11"
+      "websocketsharp-net6 >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shuit\\.nuget\\packages\\": {},
+    "C:\\Users\\shuitt\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket_client\\websocket_client\\websocket_client.csproj",
+      "projectUniqueName": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket_client\\websocket_client\\websocket_client.csproj",
       "projectName": "websocket_client",
-      "projectPath": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket_client\\websocket_client\\websocket_client.csproj",
-      "packagesPath": "C:\\Users\\shuit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shuit\\Documents\\programing\\share\\websocket_client\\websocket_client\\obj\\",
+      "projectPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket_client\\websocket_client\\websocket_client.csproj",
+      "packagesPath": "C:\\Users\\shuitt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket_client\\websocket_client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\shuit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shuitt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -788,9 +787,9 @@
             "target": "Package",
             "version": "[7.0.0, )"
           },
-          "WebSocketSharp": {
+          "websocketsharp-net6": {
             "target": "Package",
-            "version": "[1.0.3-rc11, )"
+            "version": "[1.0.0, )"
           }
         },
         "imports": [
@@ -809,20 +808,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.2.22477.23\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "パッケージ 'WebSocketSharp 1.0.3-rc11' はプロジェクトのターゲット フレームワーク 'net6.0' ではなく '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' を使用して復元されました。このパッケージは、使用しているプロジェクトとの完全な互換性がない可能性があります。",
-      "libraryId": "WebSocketSharp",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

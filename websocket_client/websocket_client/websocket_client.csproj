@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
-    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
+    <PackageReference Include="websocketsharp-net6" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

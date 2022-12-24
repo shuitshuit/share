@@ -19,10 +19,10 @@ namespace ClientServer
     {
         static void Main(string[] args)
         {
-            string jsonString = File.ReadAllText("C:\\Users\\shuit\\Documents\\programing\\share\\websocket_client\\websocket_client\\setting.json");
-            Settings settings = JsonSerializer.Deserialize<Settings>(jsonString)  ?? throw new Exception();
+            string jsonString = File.ReadAllText("C:\\Users\\shuitt\\ドキュメント\\programing\\share\\websocket_client\\websocket_client\\setting.json");
+            Settings settings = JsonSerializer.Deserialize<Settings>(jsonString) ?? throw new Exception();
             WebsocketClientServer ws = new(settings);
-            var server = ws.Run();
+            var server = ws.RunAsync();
             bool serverRun = true;
             while (serverRun)
             {
@@ -31,10 +31,12 @@ namespace ClientServer
                     serverRun = false;
                 }else
                 {
-                    Console.WriteLine("a");
+                    Console.WriteLine("-");
                 }
             }
-            Console.WriteLine(ws.IsAlive);
+            _ = ws.SendAsync("sfvdfbd");
+            var img = File.ReadAllBytes("C:\\Users\\shuitt\\Music\\『ヴィラン』3DMVゲームサイズ公開！.flac");
+            _ = ws.SendAsync(img);
             while (true)
             {
                 Console.ReadLine();

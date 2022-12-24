@@ -7,21 +7,32 @@ namespace ClientServer
 {
     class WebsocketClientServer
     {
-        private const string HOST = "0.0.0.0:8000";
-        private WebSocket ws;
+        private const string HOST = "localhost:8000";
+        private readonly WebSocket ws;
         public bool IsAlive => ws.IsAlive;
 
 
         public WebsocketClientServer(Settings settings)
         {
-            string url = $"ws://{HOST}/server?key={settings.ApiKey}";
+            string url = $"ws://{HOST}/upload?key={settings.ApiKey}&name=admin&filename=a.jpg&number=1";
             ws = new WebSocket(url);
             WebSocketSharp.Net.Cookie cookie = new("secret-key", settings.ApiSecret);
             ws.SetCookie(cookie);
+            ws.OnMessage += (sender, e) => OnMessage(sender, e);
         }
 
 
         public async Task RunAsync() => await Task.Run(() => { ws.Connect(); Console.WriteLine("wefw"); });
+
+
+        protected void OnMessage(object sender, MessageEventArgs e)
+        {
+            Console.WriteLine(e.Data);
+        }
+
+
+        public async Task SendAsync(string data) => await Task.Run(() => { ws.Send(data); });
+        public async Task SendAsync(byte[] deta) => await Task.Run(() => { ws.Send(deta); });
 
         private static Dictionary<string, dynamic> ConvertJson(string jsonString)
         {
