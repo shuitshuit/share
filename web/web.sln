@@ -1,31 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33015.44
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{0A3E6317-F9A0-441D-A615-7624846E1828}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{7AE3CB8A-6696-42D0-8113-D009CD17447C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Debug|x64.ActiveCfg = Debug|x64
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Debug|x64.Build.0 = Debug|x64
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Release|x64.ActiveCfg = Release|x64
-		{0A3E6317-F9A0-441D-A615-7624846E1828}.Release|x64.Build.0 = Release|x64
+		{7AE3CB8A-6696-42D0-8113-D009CD17447C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE3CB8A-6696-42D0-8113-D009CD17447C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE3CB8A-6696-42D0-8113-D009CD17447C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE3CB8A-6696-42D0-8113-D009CD17447C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {616A73ED-C7E4-4CE2-AEEA-D542FAABEEDD}
+		SolutionGuid = {B126CA36-6BEC-47FA-B60B-1E0127DE1807}
 	EndGlobalSection
 EndGlobal

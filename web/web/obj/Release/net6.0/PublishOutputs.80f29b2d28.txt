@@ -1,1 +1,0 @@
-C:\Users\shuitt\ドキュメント\programing\share\web\web\obj\Release\net6.0\browser-wasm\PubTmp\Out\web.config

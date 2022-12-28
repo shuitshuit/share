@@ -1,1 +1,0 @@
-C:\Users\shuitt\ドキュメント\programing\share\web\web\bin\Release\net6.0\publish\web.config
