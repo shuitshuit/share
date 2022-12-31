@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "NLog/4.7.15": {
+      "NLog/5.1.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/NLog.dll": {
@@ -14,120 +14,58 @@
             "related": ".xml"
           }
         }
-      },
-      "NLog.Config/4.7.15": {
-        "type": "package",
-        "dependencies": {
-          "NLog": "4.7.15",
-          "NLog.Schema": "4.7.15"
-        },
-        "contentFiles": {
-          "contentFiles/any/any/NLog.config": {
-            "buildAction": "None",
-            "codeLanguage": "any",
-            "copyToOutput": true,
-            "outputPath": "NLog.config"
-          }
-        }
-      },
-      "NLog.Schema/4.7.15": {
-        "type": "package",
-        "contentFiles": {
-          "contentFiles/any/any/_._": {
-            "buildAction": "None",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          }
-        }
       }
     }
   },
   "libraries": {
-    "NLog/4.7.15": {
-      "sha512": "vXMmsK17hXnMsKd8BdCrJzvb8JMT0+cPgBGRfnqcXIb6y8b6RMIZexO4hMhQgifcTHgU7dbubvCR5A5wX6Ne+A==",
+    "NLog/5.1.1": {
+      "sha512": "YBfUDzipCaucs+8ieCDp8XECumiWsQbZwSUVLlt9i7FGV03nOPqoVzLtmlhbTxq4TN92BBsLacqPAE/ZyDDJ1g==",
       "type": "package",
-      "path": "nlog/4.7.15",
+      "path": "nlog/5.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/monoandroid44/NLog.dll",
-        "lib/monoandroid44/NLog.xml",
+        "N.png",
         "lib/net35/NLog.dll",
         "lib/net35/NLog.xml",
-        "lib/net40-client/NLog.dll",
-        "lib/net40-client/NLog.xml",
         "lib/net45/NLog.dll",
         "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
         "lib/netstandard1.3/NLog.dll",
         "lib/netstandard1.3/NLog.xml",
         "lib/netstandard1.5/NLog.dll",
         "lib/netstandard1.5/NLog.xml",
         "lib/netstandard2.0/NLog.dll",
         "lib/netstandard2.0/NLog.xml",
-        "lib/sl4/NLog.dll",
-        "lib/sl4/NLog.xml",
-        "lib/sl5/NLog.dll",
-        "lib/sl5/NLog.xml",
-        "lib/wp8/NLog.dll",
-        "lib/wp8/NLog.xml",
-        "lib/xamarinios10/NLog.dll",
-        "lib/xamarinios10/NLog.xml",
-        "nlog.4.7.15.nupkg.sha512",
+        "nlog.5.1.1.nupkg.sha512",
         "nlog.nuspec"
-      ]
-    },
-    "NLog.Config/4.7.15": {
-      "sha512": "njc2NvwgAzEuH609TGO4yqpokcxXFdypHwG3I8hyLYIE4pr+j4KJB4ZhsyODVwkP/n2F2V4uJ24VW4icNyJMcA==",
-      "type": "package",
-      "path": "nlog.config/4.7.15",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/NLog.config",
-        "contentFiles/any/any/NLog.config",
-        "nlog.config.4.7.15.nupkg.sha512",
-        "nlog.config.nuspec",
-        "tools/Install.ps1"
-      ]
-    },
-    "NLog.Schema/4.7.15": {
-      "sha512": "cBzca2abS5Qz8e40vIPZNWBiDAQaRY7PKWffBbazMAzvxGBM6/ZWgaAEmqHUOluhV41cuyXnHOzo485JPLeChg==",
-      "type": "package",
-      "path": "nlog.schema/4.7.15",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/NLog.xsd",
-        "contentFiles/any/any/NLog.xsd",
-        "nlog.schema.4.7.15.nupkg.sha512",
-        "nlog.schema.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "NLog.Config >= 4.7.15"
+      "NLog >= 5.1.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shuit\\.nuget\\packages\\": {},
+    "C:\\Users\\shuitt\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shuit\\Documents\\programing\\share\\web\\web\\web.csproj",
+      "projectUniqueName": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\web\\web\\web.csproj",
       "projectName": "web",
-      "projectPath": "C:\\Users\\shuit\\Documents\\programing\\share\\web\\web\\web.csproj",
-      "packagesPath": "C:\\Users\\shuit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shuit\\Documents\\programing\\share\\web\\web\\obj\\",
+      "projectPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\web\\web\\web.csproj",
+      "packagesPath": "C:\\Users\\shuitt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\web\\web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\shuit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shuitt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -155,9 +93,9 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "NLog.Config": {
+          "NLog": {
             "target": "Package",
-            "version": "[4.7.15, )"
+            "version": "[5.1.1, )"
           }
         },
         "imports": [
@@ -179,7 +117,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.2.22477.23\\RuntimeIdentifierGraph.json"
       }
     }
   }

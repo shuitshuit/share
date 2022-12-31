@@ -8,27 +8,20 @@
     ".NETCoreApp,Version=v6.0": {
       "web/1.0.0": {
         "dependencies": {
-          "NLog.Config": "4.7.15"
+          "NLog": "5.1.1"
         },
         "runtime": {
           "web.dll": {}
         }
       },
-      "NLog/4.7.15": {
+      "NLog/5.1.1": {
         "runtime": {
           "lib/netstandard2.0/NLog.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.7.15.867"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.1.1.1522"
           }
         }
-      },
-      "NLog.Config/4.7.15": {
-        "dependencies": {
-          "NLog": "4.7.15",
-          "NLog.Schema": "4.7.15"
-        }
-      },
-      "NLog.Schema/4.7.15": {}
+      }
     }
   },
   "libraries": {
@@ -37,26 +30,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "NLog/4.7.15": {
+    "NLog/5.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vXMmsK17hXnMsKd8BdCrJzvb8JMT0+cPgBGRfnqcXIb6y8b6RMIZexO4hMhQgifcTHgU7dbubvCR5A5wX6Ne+A==",
-      "path": "nlog/4.7.15",
-      "hashPath": "nlog.4.7.15.nupkg.sha512"
-    },
-    "NLog.Config/4.7.15": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-njc2NvwgAzEuH609TGO4yqpokcxXFdypHwG3I8hyLYIE4pr+j4KJB4ZhsyODVwkP/n2F2V4uJ24VW4icNyJMcA==",
-      "path": "nlog.config/4.7.15",
-      "hashPath": "nlog.config.4.7.15.nupkg.sha512"
-    },
-    "NLog.Schema/4.7.15": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cBzca2abS5Qz8e40vIPZNWBiDAQaRY7PKWffBbazMAzvxGBM6/ZWgaAEmqHUOluhV41cuyXnHOzo485JPLeChg==",
-      "path": "nlog.schema/4.7.15",
-      "hashPath": "nlog.schema.4.7.15.nupkg.sha512"
+      "sha512": "sha512-YBfUDzipCaucs+8ieCDp8XECumiWsQbZwSUVLlt9i7FGV03nOPqoVzLtmlhbTxq4TN92BBsLacqPAE/ZyDDJ1g==",
+      "path": "nlog/5.1.1",
+      "hashPath": "nlog.5.1.1.nupkg.sha512"
     }
   }
 }

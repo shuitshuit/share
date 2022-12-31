@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog.Config" Version="4.7.15" />
+    <None Remove="web.nlog" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="web.nlog" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="5.1.1" />
   </ItemGroup>
 
 </Project>
