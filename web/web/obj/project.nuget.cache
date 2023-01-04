@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2+bmW+nWJybTTcSZDWAACEndA2kVac4B59mHP+SIOfgUGNjUyioUdwI0SBXxMph+ZpS7tp38Uklw5m1K83LJzw==",
+  "dgSpecHash": "XujtC8yWO0dfBzvnk86Qy8h9anMUghgwS+GTu4WUTAa5MtO9C5YxurF+i1fZ5IeBGIlZ3VwnXWbJ9mJ/M/Tulg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shuitt\\ドキュメント\\programing\\share\\web\\web\\web.csproj",
+  "projectFilePath": "C:\\Users\\shuit\\Documents\\programing\\share\\web\\web\\web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\shuitt\\.nuget\\packages\\nlog\\5.1.1\\nlog.5.1.1.nupkg.sha512"
+    "C:\\Users\\shuit\\.nuget\\packages\\dynamiclanguageruntime\\1.3.3\\dynamiclanguageruntime.1.3.3.nupkg.sha512",
+    "C:\\Users\\shuit\\.nuget\\packages\\ironpython\\3.4.0\\ironpython.3.4.0.nupkg.sha512",
+    "C:\\Users\\shuit\\.nuget\\packages\\mono.unix\\7.1.0-final.1.21458.1\\mono.unix.7.1.0-final.1.21458.1.nupkg.sha512",
+    "C:\\Users\\shuit\\.nuget\\packages\\nlog\\5.1.1\\nlog.5.1.1.nupkg.sha512",
+    "C:\\Users\\shuit\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
